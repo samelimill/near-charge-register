@@ -13,11 +13,13 @@ $(function () {
     localStorage.setItem(rowKey, textInput);
   });
 
-  //Fetch current hour for comparison to sheet
-  var currentHour = parseInt(dayjs().format('HH'));
+
 
   //Compare fetched hour to rows, color coded for past/present/future
-  $('.row').each(function (i){
+  $('.time-block').each(function (i){
+
+      //Fetch current hour for comparison to sheet
+    var currentHour = parseInt(dayjs().format('HH'));
     //Pulls data-hour tag from each row and makes it a number instead of a string
     var rowHour = parseInt($(this).attr('id'));
 
@@ -29,15 +31,14 @@ $(function () {
     } else if (rowHour < currentHour) {
       $(this).addClass('past');
     };
-  });  
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  $('.saveBtn').click(function()
-    
-  )
+  // Adds user input 
+    var storedText = $(this).attr('id');
+    console.log(storedText);
+    $(this).children('.description').text(localStorage.getItem(storedText));
   
+  });
+
   //Display current date on top of page
   $('#currentDay').text(dayjs().format('dddd, MMM D, YYYY'));
  
