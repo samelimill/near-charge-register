@@ -8,10 +8,19 @@ $(function () {
     //set user inputted tasks as variable to be saved as value for local storage 
     var textInput = $(this).siblings('.description').val();
     localStorage.setItem(rowKey, textInput);
+    
+    
+    // Display a short message at the top of the page when an event is saved
+    var saveConfirm = $('#save-confirm');
+    var hourText = $(this).siblings('.hour').html();
+    saveConfirm.text('Event Saved for ' + hourText);
+    setTimeout(function(){
+        saveConfirm.text('');
+     }, 1000);
   });
 
   //Compare fetched hour to rows, color coded for past/present/future
-  $('.time-block').each(function (i){
+  $('.time-block').each(function (){
 
     //Fetch current hour for comparison to sheet
     var currentHour = parseInt(dayjs().format('HH'));

@@ -12,6 +12,10 @@ textarea {
   padding: 10px;
 }
 
+#save-confirm {
+  height: 20px;
+}
+
 .description {
   white-space: pre-wrap;
 }
@@ -61,4 +65,5 @@ textarea {
 
 .saveBtn:active {
   background-color: #13a865;
+  transition: 0s;
 }
