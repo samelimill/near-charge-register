@@ -1,7 +1,4 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
+// jQuery wrap
 $(function () {
    
   // Function for save button, sends task and row id to local storage
@@ -13,12 +10,10 @@ $(function () {
     localStorage.setItem(rowKey, textInput);
   });
 
-
-
   //Compare fetched hour to rows, color coded for past/present/future
   $('.time-block').each(function (i){
 
-      //Fetch current hour for comparison to sheet
+    //Fetch current hour for comparison to sheet
     var currentHour = parseInt(dayjs().format('HH'));
     //Pulls data-hour tag from each row and makes it a number instead of a string
     var rowHour = parseInt($(this).attr('id'));
@@ -32,14 +27,12 @@ $(function () {
       $(this).addClass('past');
     };
 
-  // Adds user input 
+    // Adds user input 
     var storedText = $(this).attr('id');
     console.log(storedText);
     $(this).children('.description').text(localStorage.getItem(storedText));
-  
   });
 
   //Display current date on top of page
   $('#currentDay').text(dayjs().format('dddd, MMM D, YYYY'));
- 
 });
